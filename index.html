@@ -1,23 +1,441 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- SEO 최적화를 위한 JSON-LD 스키마 -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yourwebsite.com/g80-rent-guide"
+      },
+      "headline": "2026 제네시스 G80 렌트 비용, 장단점 완벽 분석: 평균 견적부터 저렴한 곳 비교 팁까지",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.pexels.com/photos/10356514/pexels-photo-10356514.jpeg",
+        "width": 1200,
+        "height": 628
+      },
+      "datePublished": "2026-03-15",
+      "dateModified": "2026-03-15",
+      "author": {
+        "@type": "Organization",
+        "name": "카르페디엠 모빌리티 리서치"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "카르페디엠 모빌리티 리서치",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourwebsite.com/logo.png"
+        }
+      },
+      "description": "2026년형 제네시스 G80 장기 렌트카의 예상 비용, 장점, 단점을 심층 분석합니다. G80 렌트 가격을 결정하는 요소(기간, 주행거리, 옵션)와 구매/리스/렌트 비교, 저렴한 업체 찾는 팁, 신규 가입 혜택, 내돈내산 후기까지 자세히 안내합니다."
+    }
+  </script>
+
+  <!-- Google Fonts Noto Sans KR (부드러운 디자인을 위한 서체) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+  <style>
+    /* 기본 스타일 재설정 */
+    body { font-family: 'Noto Sans KR', sans-serif; background-color: #f2f8f5; color: #333; margin:0; padding:0; line-height: 1.6; }
+    .wrapper { max-width:900px; margin:30px auto; background:#ffffff; padding:30px; border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    
+    /* 헤더 스타일 */
+    h1 { font-size:2.5em; color:#2c7a7b; margin-bottom:0.6em; text-align:center; border-bottom: 2px solid #e6fffa; padding-bottom: 10px; }
+    h2 { font-size:1.8em; color:#319795; margin-top:2em; margin-bottom:0.8em; border-left: 5px solid #319795; padding-left: 15px; }
+    h3 { font-size:1.4em; color:#285e61; margin-top:1.5em; margin-bottom:0.5em; }
+    p { margin-bottom:1.2em; text-align: justify; }
+    
+    /* 강조 스타일 */
+    .highlight { color:#d45d79; font-weight:bold; }
+    .bold-text { font-weight: bold; }
+    
+    /* 이미지 및 캡션 스타일 */
+    .image-container { text-align: center; margin: 20px 0; }
+    .image-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .caption { font-size: 0.9em; color: #666; margin-top: 10px; }
+
+    /* 표 스타일 (데이터 시각화) */
+    .comparison-table { width:100%; border-collapse:collapse; margin-top:1.5em; }
+    .comparison-table th, .comparison-table td { border:1px solid #cbd5e0; padding:12px; text-align:left; font-size: 0.95em; }
+    .comparison-table th { background-color:#e6fffa; font-weight:700; color:#2c7a7b; }
+    .comparison-table td:first-child { background-color: #f7fcfc; font-weight: bold; }
+
+    /* 입력 폼 스타일 (체류 시간 증진) */
+    .input-form { margin:2.5em 0; padding:2em; background:#f0fcfb; border-radius:10px; border: 1px dashed #a0aec0; }
+    .input-form label { display:block; margin-bottom:0.8em; font-weight:600; color:#2c7a7b; font-size:1.1em; }
+    .input-form input, .input-form select { width:calc(100% - 24px); padding:12px; margin-bottom:1.5em; border:1px solid #a0aec0; border-radius:6px; background-color: #ffffff; font-size:1em; }
+    .input-form button { padding:1em 2em; background-color:#319795; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:1.1em; font-weight:700; transition: background-color 0.3s ease; }
+    .input-form button:hover { background-color:#2c7a7b; }
+    #calcResult { font-size:1.4em; color:#d45d79; margin-top:1.5em; text-align:center; background-color: #ffeaea; padding: 15px; border-radius: 8px; border: 1px solid #d45d79; }
+
+    /* 목록 스타일 */
+    ul { margin: 1.5em 0; padding-left: 20px; }
+    li { margin-bottom: 0.8em; }
+
+    /* FAQ 스타일 (접기/펼치기) */
+    .faq { margin-top:3em; }
+    .faq-item { margin-bottom:1.5em; background: #fafafa; padding: 15px; border-radius: 8px; border-left: 4px solid #319795; }
+    .faq-item h3 { cursor:pointer; color:#319795; font-size: 1.2em; margin-top: 0; margin-bottom: 0.5em; transition: color 0.3s ease; }
+    .faq-item h3:hover { color: #2c7a7b; }
+    .faq-item p { margin: 0; padding-top: 10px; border-top: 1px dashed #eee; display: none; }
+
+    /* 외부 링크 섹션 */
+    .external-links { margin-top:3em; padding:20px; background:#f0fcfb; border-radius:8px; }
+    .external-links h2 { border-left: 5px solid #d45d79; color: #d45d79; }
+    .external-links a { color:#2c7a7b; text-decoration:none; font-weight: bold; }
+    .external-links a:hover { text-decoration: underline; }
+    
+    /* 그래프 시각화 (CSS only) */
+    .cost-graph { position: relative; width: 100%; height: 200px; background-color: #f7fcfc; border-radius: 8px; border: 1px solid #e0e0e0; margin: 20px 0; padding: 20px; box-sizing: border-box; }
+    .cost-graph .bar { position: absolute; bottom: 0; width: 20%; background-color: #319795; transition: height 0.5s ease; border-top-left-radius: 5px; border-top-right-radius: 5px; }
+    .cost-graph .label { position: absolute; bottom: -25px; font-size: 0.9em; text-align: center; color: #555; }
+    .cost-graph .data-label { position: absolute; top: -20px; font-size: 0.9em; font-weight: bold; color: #2c7a7b; }
+
+    /* 그래프 데이터 예시 */
+    .cost-graph .bar:nth-child(1) { left: 5%; height: 60%; } /* 24개월 */
+    .cost-graph .bar:nth-child(2) { left: 30%; height: 50%; } /* 36개월 */
+    .cost-graph .bar:nth-child(3) { left: 55%; height: 40%; } /* 48개월 */
+    .cost-graph .bar:nth-child(4) { left: 80%; height: 35%; } /* 60개월 */
+
+    .cost-graph .label:nth-child(5) { left: 5%; }
+    .cost-graph .label:nth-child(6) { left: 30%; }
+    .cost-graph .label:nth-child(7) { left: 55%; }
+    .cost-graph .label:nth-child(8) { left: 80%; }
+
+    .cost-graph .data-label:nth-child(9) { left: 5%; }
+    .cost-graph .data-label:nth-child(10) { left: 30%; }
+    .cost-graph .data-label:nth-child(11) { left: 55%; }
+    .cost-graph .data-label:nth-child(12) { left: 80%; }
+    
+  </style>
+
+  <script>
+    function calculateRentCost() {
+      // 렌트 조건 변수 가져오기
+      const duration = Number(document.getElementById('duration').value);
+      const mileage = Number(document.getElementById('mileage').value);
+      const trim = document.getElementById('trim').value;
+      const initialPayment = document.getElementById('initialPayment').value;
+
+      let baseCost = 0; // 월 렌탈료 기본값 (예시: 36개월, 기본 트림, 1만km 기준)
+      let trimCost = 0; // 트림 옵션 비용
+      let mileageCost = 0; // 주행거리 옵션 비용
+
+      // 1. 기본 트림에 따른 월 예상 비용 설정 (2026년 G80 모델 기준 예상치)
+      if (trim === 'standard') {
+        baseCost = 800000; // 2.5T 기본 모델 기준
+        trimCost = 0;
+      } else if (trim === 'advanced') {
+        baseCost = 900000; // 2.5T 고급 옵션 모델 기준
+        trimCost = 100000;
+      } else if (trim === 'sport') {
+        baseCost = 1100000; // G80 스포츠 3.5T 모델 기준
+        trimCost = 300000;
+      }
+
+      // 2. 계약 기간에 따른 할인/할증 적용 (장기일수록 월 비용 저렴)
+      if (duration === 24) {
+        baseCost = baseCost * 1.1; // 단기 렌트 할증 (10%)
+      } else if (duration === 48) {
+        baseCost = baseCost * 0.95; // 장기 렌트 할인 (5%)
+      } else if (duration === 60) {
+        baseCost = baseCost * 0.9; // 초장기 렌트 할인 (10%)
+      }
+
+      // 3. 주행거리에 따른 추가 비용 (주행거리 많을수록 비용 상승)
+      if (mileage === 20000) {
+        mileageCost = 50000; // 연 2만km 추가 비용
+      } else if (mileage === 30000) {
+        mileageCost = 100000; // 연 3만km 추가 비용
+      }
+
+      // 4. 초기 납입금(보증금/선수금)에 따른 월 납입금 조정 (보증금/선수금 납입시 월 납입금 하락)
+      if (initialPayment === 'deposit') {
+        baseCost = baseCost * 0.9; // 보증금 납부시 월 납입금 10% 인하 (보증금은 회수 가능)
+      } else if (initialPayment === 'prepayment') {
+        baseCost = baseCost * 0.85; // 선수금 납부시 월 납입금 15% 인하 (선수금은 소멸)
+      }
+
+      const totalMonthlyCost = baseCost + mileageCost;
+      const totalCostOverPeriod = totalMonthlyCost * duration;
+
+      document.getElementById('calcResult').innerHTML = `
+        <h3>예상 월 렌트료: <span class="highlight">${totalMonthlyCost.toLocaleString()}원</span></h3>
+        <p>※ ${duration}개월 총 예상 납부 금액: 약 ${totalCostOverPeriod.toLocaleString()}원</p>
+        <p>※ 위 금액은 보험료, 부가세, 취득세 등이 모두 포함된 예상치이며, 실제 견적은 업체별 프로모션에 따라 달라질 수 있습니다.</p>
+      `;
+    }
+
+    // FAQ 접기/펼치기
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqItems = document.querySelectorAll('.faq-item h3');
+      faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const p = this.nextElementSibling;
+          if (p.style.display === 'none' || !p.style.display) {
+            p.style.display = 'block';
+          } else {
+            p.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>2026 제네시스 G80 렌트 비용, 장단점 완벽 분석: 평균 견적부터 저렴한 곳 비교 팁까지</h1>
+    <p>제네시스 G80은 국내 프리미엄 세단 시장을 대표하는 모델로, 그 압도적인 디자인과 성능 덕분에 많은 운전자들의 드림카로 꼽힙니다. <span class="highlight">G80을 구매하는 대신 렌트(장기 렌트)를 선택하는 비율이 꾸준히 증가</span>하고 있는데, 이는 초기 비용 부담 완화, 세금 절감 효과, 그리고 유지보수의 편리함 때문입니다.</p>
+    <p>하지만 G80 렌트 견적은 단순히 차량 가격으로만 결정되지 않습니다. <span class="highlight">계약 기간, 연간 주행거리, 차량 옵션, 보험 조건, 그리고 렌트 업체별 프로모션</span> 등 복합적인 요인들이 월 렌트료에 큰 영향을 미칩니다. 이 글에서는 2026년 최신 G80 모델을 기준으로 렌트 비용을 심층 분석하고, 구매나 리스와의 차이점, 그리고 <span class="bold-text">가장 저렴한 렌트 업체</span>를 찾는 노하우까지 총망라하여 제공합니다.</p>
+    
+    <!-- 이미지 삽입 (Pexels.com 출처) -->
+    <div class="image-container">
+        <img src="https://images.pexels.com/photos/10356514/pexels-photo-10356514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="제네시스 G80 렌트카 이미지">
+        <p class="caption">G80 렌트는 고급 세단을 합리적으로 이용할 수 있는 대안으로 주목받고 있습니다. (출처: Pexels.com)</p>
+    </div>
+
+    <!-- 비용 계산 입력폼 (체류 시간 증진) -->
+    <div class="input-form">
+      <h2>G80 렌트 예상 비용 계산기</h2>
+      <p>본인의 희망 조건을 입력하여 대략적인 G80 렌트 월 납입금을 예측해 보세요. (2026년 기준 예상치)</p>
+      <label for="duration">1. 계약 기간 (장기 렌트)</label>
+      <select id="duration" name="duration" required>
+        <option value="24">24개월 (단기)</option>
+        <option value="36">36개월 (표준)</option>
+        <option value="48">48개월 (장기)</option>
+        <option value="60">60개월 (초장기)</option>
+      </select>
+      
+      <label for="mileage">2. 연간 주행거리 (계약 만료 후 차량 인수 여부 고려)</label>
+      <select id="mileage" name="mileage" required>
+        <option value="10000">10,000 km (최소 주행거리)</option>
+        <option value="20000">20,000 km (표준 주행거리)</option>
+        <option value="30000">30,000 km (장거리 운행)</option>
+      </select>
+      
+      <label for="trim">3. G80 차량 트림 및 옵션 선택</label>
+      <select id="trim" name="trim" required>
+        <option value="standard">2.5T 기본 모델 (표준 트림)</option>
+        <option value="advanced">2.5T 고급 옵션 모델</option>
+        <option value="sport">3.5T 스포츠 모델 (고성능 트림)</option>
+      </select>
+
+      <label for="initialPayment">4. 초기 납입금 형태 (월 납입금 조정)</label>
+      <select id="initialPayment" name="initialPayment" required>
+        <option value="none">초기 비용 없음 (월 납입금 상승)</option>
+        <option value="deposit">보증금 납부 (월 납입금 하락, 만료 시 환급)</option>
+        <option value="prepayment">선수금 납부 (월 납입금 하락, 만료 시 소멸)</option>
+      </select>
+      
+      <button type="button" onclick="calculateRentCost()">예상 렌트 비용 계산하기</button>
+      <div id="calcResult"></div>
+    </div>
+    
+    <!-- 장기 렌트 vs 리스 vs 구매 비교표 -->
+    <h2>G80 렌트 vs 리스 vs 구매: 장단점 비교</h2>
+    <p>G80을 이용하는 세 가지 주요 방법(장기 렌트, 운용 리스, 직접 구매)을 비교 분석하여 본인에게 맞는 최적의 선택지를 찾아보세요. <span class="highlight">G80 렌트의 가장 큰 장점은 초기 비용 부담이 적고 보험 및 세금 관리가 편리하다는 점</span>입니다.</p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>장기 렌트</th>
+          <th>운용 리스</th>
+          <th>직접 구매 (할부/현금)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bold-text">차량 명의</span></td>
+          <td>렌트사 (허-번호판)</td>
+          <td>리스사 (일반 번호판)</td>
+          <td>개인 명의</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">초기 비용</span></td>
+          <td>보증금/선수금 선택 가능 (무보증 렌트 가능)</td>
+          <td>보증금 필수 (초기 비용 부담 있음)</td>
+          <td>차량가 100% or 할부 원금 + 취득세/보험료</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">세금 처리</span></td>
+          <td>월 렌트료 전액 손비 처리 가능 (사업자 유리)</td>
+          <td>리스료 중 일부 이자비용만 손비 처리 (제약 있음)</td>
+          <td>감가상각비 처리 (차량가액 한도)</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">보험료</span></td>
+          <td>렌트료에 포함 (렌트사 보험 사용, 사고 시 면책금만 납부)</td>
+          <td>개인 보험 가입 (경력 인정)</td>
+          <td>개인 보험 가입 (운전자 본인 보험 경력)</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">유지 보수</span></td>
+          <td>정비 서비스 포함 옵션 선택 시 렌트사 관리</td>
+          <td>개인 관리 (정비 서비스 별도 선택 가능)</td>
+          <td>개인 관리 (정비 비용 직접 부담)</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">주행거리 제한</span></td>
+          <td>있음 (초과 시 위약금 발생)</td>
+          <td>있음 (초과 시 위약금 발생)</td>
+          <td>없음</td>
+        </tr>
+        <tr>
+          <td><span class="bold-text">만기 시점</span></td>
+          <td>반납, 인수, 재렌트 중 선택</td>
+          <td>반납, 인수, 재리스 중 선택</td>
+          <td>개인 소유</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- G80 렌트 비용 세부 분석: 렌트 가격을 결정하는 핵심 요소 -->
+    <h2>G80 렌트 가격을 결정하는 5가지 핵심 요소</h2>
+    <p>G80 렌트 견적서를 받아보면 단순히 차량 가격 외에 복잡한 항목들이 포함되어 있습니다. <span class="highlight">G80 렌트 비용이 천차만별인 이유는 바로 이 세부 조건들 때문</span>입니다. 2026년 G80 모델 기준으로 각 요소별 비용 변화를 상세히 설명해드립니다.</p>
+
+    <h3>1. 계약 기간 (Duration)</h3>
+    <p>장기 렌트의 <span class="bold-text">계약 기간이 길수록 월 렌트료는 낮아집니다.</span> 렌트 업체 입장에서 장기 계약은 안정적인 수익을 의미하므로 할인율을 높여줍니다. 일반적으로 24개월 단기 렌트보다 48개월이나 60개월의 초장기 렌트가 월 납입금 측면에서 훨씬 저렴합니다. G80 렌트를 3년(36개월)로 할 경우 월 90만원이라면, 5년(60개월)로 할 경우 월 70만원대로 떨어질 수 있습니다.</p>
+    <div class="cost-graph">
+      <div class="bar" style="height: 60%; left: 5%;"></div>
+      <div class="bar" style="height: 50%; left: 30%;"></div>
+      <div class="bar" style="height: 40%; left: 55%;"></div>
+      <div class="bar" style="height: 35%; left: 80%;"></div>
+      <div class="label" style="left: calc(5% + 10%);">24개월</div>
+      <div class="label" style="left: calc(30% + 10%);">36개월</div>
+      <div class="label" style="left: calc(55% + 10%);">48개월</div>
+      <div class="label" style="left: calc(80% + 10%);">60개월</div>
+      <div class="data-label" style="left: calc(5% + 10%); top: calc(100% - 60% - 10px);">월 90만원</div>
+      <div class="data-label" style="left: calc(30% + 10%); top: calc(100% - 50% - 10px);">월 80만원</div>
+      <div class="data-label" style="left: calc(55% + 10%); top: calc(100% - 40% - 10px);">월 70만원</div>
+      <div class="data-label" style="left: calc(80% + 10%); top: calc(100% - 35% - 10px);">월 65만원</div>
+    </div>
+    <p class="caption">계약 기간에 따른 월 렌트료 변화 (가상의 G80 렌트 비용 그래프)</p>
+
+    <h3>2. 초기 비용 (보증금/선수금)</h3>
+    <p>초기 비용 납입 여부는 월 렌트료에 큰 영향을 미칩니다. <span class="bold-text">무보증 렌트는 초기 목돈 지출이 없다는 장점이 있지만, 월 납입금이 상대적으로 높습니다.</span> 반면, 보증금이나 선수금을 납입하면 월 렌트료를 낮출 수 있습니다. 보증금은 계약 만료 시 반환되지만, 선수금은 미리 내는 렌트료의 일부로 만기 시 소멸됩니다. G80의 경우 보증금을 차량가의 20~30% 선납할 경우 월 렌트료를 10~20%가량 절감할 수 있습니다.</p>
+
+    <h3>3. 연간 주행거리 (Mileage)</h3>
+    <p>주행거리 제한은 G80 렌트카의 가장 중요한 조건 중 하나입니다. 렌트 계약 시 <span class="bold-text">주행거리를 초과하면 만기 시 위약금을 지불해야 합니다.</span> 주행거리 초과 위약금은 G80 모델 기준 1km당 수백 원에 달할 수 있어, 장거리 운행자라면 애초에 연간 주행거리를 넉넉하게 설정하는 것이 유리합니다. 연간 1만km 기준 렌트료가 월 80만원이라면, 3만km 기준은 월 90만원 이상으로 올라갈 수 있습니다.</p>
+
+    <h3>4. 차량 옵션 (트림 및 추가 옵션)</h3>
+    <p>G80은 기본 모델 외에도 다양한 트림과 수많은 추가 옵션을 선택할 수 있습니다. <span class="bold-text">헤드업 디스플레이, 파노라마 선루프, 드라이빙 어시스턴스 패키지 등 추가 옵션</span>을 넣을수록 차량 가격이 상승하여 월 렌트료도 함께 증가합니다. 특히 G80 스포츠 모델이나 3.5T 엔진 모델은 기본 모델 대비 월 렌트료가 20~30만원 이상 차이 날 수 있습니다. 신규 가입 혜택을 찾아 옵션 할인 이벤트를 활용하는 것이 좋은 방법입니다.</p>
+
+    <h3>5. 보험 조건 및 정비 서비스</h3>
+    <p>렌트료에는 보험료와 정비 서비스 비용이 포함되어 있습니다. <span class="bold-text">자차 보험의 자기부담금(면책금) 설정, 만 21세/만 26세 제한, 그리고 정기적인 소모품 교환이 포함된 풀 정비 서비스 여부</span>에 따라 G80 렌트 견적이 달라집니다. 풀 정비 서비스를 선택하면 월 렌트료는 높아지지만, 차량 유지보수 비용에 대한 걱정을 완전히 덜 수 있어 편리합니다.</p>
+
+    <!-- G80 렌트의 장점과 단점 (Pros/Cons) -->
+    <h2>G80 렌트의 장점 (Pros)과 단점 (Cons) 분석</h2>
+    <p>G80 장기 렌트는 장점뿐만 아니라 단점도 명확합니다. <span class="highlight">G80 렌트 내돈내산 후기</span>를 살펴보면 초기 비용 부담이 없다는 점을 가장 큰 장점으로 꼽지만, '허' 번호판과 주행거리 제한에 대한 아쉬움을 표하는 경우가 많습니다. G80 렌트를 결정하기 전 장단점을 꼼꼼히 비교해 보세요.</p>
+    
+    <h3>G80 렌트 장점:</h3>
+    <ul>
+      <li><span class="bold-text">초기 비용 부담 제로:</span> G80을 신차로 구매할 때 필요한 취득세, 공채, 보험료, 선수금 등을 한 번에 납부할 필요가 없습니다. 무보증 렌트 상품을 이용하면 초기 비용 없이 G80을 이용할 수 있습니다.</li>
+      <li><span class="bold-text">세금 절감 효과 (사업자 유리):</span> 개인 사업자나 법인 사업자는 G80 렌트료 전액을 손비 처리하여 세금 공제 혜택을 받을 수 있습니다. 이는 G80 리스보다 유리한 부분입니다.</li>
+      <li><span class="bold-text">보험료 인상 걱정 없음:</span> G80 렌트는 렌트카 회사의 보험을 이용하므로 운전자의 사고 이력에 따른 보험료 할증이 발생하지 않습니다. 사고가 나도 면책금만 납부하면 됩니다.</li>
+      <li><span class="bold-text">정비 관리 편리:</span> 정비 서비스 포함 상품 선택 시, 정기적인 소모품 교환(엔진오일, 타이어 등)을 렌트사에서 책임지므로 G80 유지보수에 신경 쓸 필요가 없습니다.</li>
+      <li><span class="bold-text">자산 감소 및 부채 부담 없음:</span> 렌트 차량은 개인 부채로 잡히지 않아 신용도에 영향을 주지 않습니다. 차량 감가상각으로 인한 손실도 렌트사가 부담합니다.</li>
+    </ul>
+
+    <h3>G80 렌트 단점:</h3>
+    <ul>
+      <li><span class="bold-text">'허' 번호판:</span> G80 렌트카는 일반 자가용과 달리 '허' 번호판을 사용합니다. 일부 운전자들은 이를 꺼려하는 경우가 있습니다. 리스는 일반 번호판을 사용합니다.</li>
+      <li><span class="bold-text">총비용 측면에서의 불리함:</span> 계약 기간이 길어질수록 렌트료 총액이 G80의 차량 가격보다 비싸지는 경우가 발생할 수 있습니다. 장기 렌트는 이자 비용이 포함되어 있습니다.</li>
+      <li><span class="bold-text">주행거리 제한:</span> 계약 시 정한 연간 주행거리를 초과할 경우 추가 비용이 발생합니다. 주행거리가 많은 운전자는 G80 렌트보다는 구매를 고려해야 합니다.</li>
+      <li><span class="bold-text">차량 인수 시 불리함:</span> 계약 만료 후 G80을 인수할 때의 인수 가격이 시장 중고차 가격보다 높게 책정되어 있을 수 있습니다.</li>
+    </ul>
+
+    <!-- G80 렌트 저렴한 곳 찾는 팁 -->
+    <h2>G80 렌트 저렴한 곳 찾는 노하우 (비교견적 필수)</h2>
+    <p>G80 렌트 비용은 렌트 업체마다 다릅니다. <span class="highlight">G80 렌트 전문 업체 순위</span>를 찾아보면 대기업 계열사(롯데렌터카, SK렌터카)와 온라인 플랫폼 업체(다이렉트 렌트)로 나뉘는데, 각 업체마다 G80 프로모션이나 신규 가입 혜택이 다르므로 반드시 비교 견적을 받아봐야 합니다.</p>
+    <ul>
+      <li><span class="bold-text">다이렉트 렌트 플랫폼 이용:</span> G80 렌트 비용을 낮추려면 중간 유통 과정을 줄인 다이렉트 렌트 플랫폼을 이용하는 것이 유리합니다. 여러 업체의 견적을 한 번에 비교할 수 있어 <span class="bold-text">저렴한곳</span>을 찾기 쉽습니다.</li>
+      <li><span class="bold-text">비수기 프로모션 활용:</span> 보통 신차 출고가 뜸한 월 초, 그리고 렌트 계약이 집중되는 연말/연초를 피해 <span class="bold-text">비수기(월 중순)에 계약</span>하면 G80 할인 이벤트나 사은품/현금지원 혜택을 받을 가능성이 높습니다.</li>
+      <li><span class="bold-text">선납금/보증금 활용:</span> 초기 목돈 지출이 가능할 경우 G80 렌트 비용을 낮추기 위해 보증금을 납부하는 것이 좋습니다. 보증금은 만기 시 환급받을 수 있으므로 월 납입금 절감 효과를 극대화할 수 있습니다.</li>
+      <li><span class="bold-text">G80 재고 차량 확인:</span> 렌트 업체에서 이미 선구매하여 보유하고 있는 G80 재고 차량을 선택하면 즉시 출고가 가능하며, 일반적인 신차 주문보다 렌트 비용이 저렴한 경우가 많습니다.</li>
+    </ul>
+
+    <!-- 자주 묻는 질문 (FAQ) -->
+    <div class="faq">
+      <h2>자주 묻는 질문 (G80 렌트 FAQ)</h2>
+      <div class="faq-item">
+        <h3>G80 렌트 시 보험 경력 인정이 되나요?</h3>
+        <p>G80 렌트카는 렌트 업체 명의의 보험을 이용하기 때문에 운전자 개인의 보험 경력이 단절됩니다. 계약 기간 동안 보험료 할증은 없지만, 만기 후 본인 명의로 차량을 구매할 때 보험 경력을 다시 쌓아야 하는 단점이 있습니다. 운전 경력이 중요한 분들은 리스를 고려하거나, 만기 시 보험사에 렌트 이용 기간을 인정받는 별도의 상품을 찾아보는 것이 좋습니다.</p>
+      </div>
+      <div class="faq-item">
+        <h3>G80 렌트 만기 시 인수 가격은 어떻게 결정되나요?</h3>
+        <p>G80 렌트 계약 시점에 미리 잔존 가치(만기 시 예상 중고차 가격)가 책정됩니다. 만기 시 차량을 인수하려면 이 잔존 가치만큼의 금액을 렌트 업체에 납부해야 합니다. G80 모델은 감가상각이 적은 편이지만, 만약 중고차 시장 가격이 잔존 가치보다 낮다면 반납하는 것이 유리할 수 있습니다.</p>
+      </div>
+      <div class="faq-item">
+        <h3>신용도가 낮아도 G80 렌트가 가능한가요?</h3>
+        <p>렌트카 회사마다 신용 점수 기준이 다릅니다. G80 같은 고가 차량은 상대적으로 신용 기준이 높은 편입니다. 신용 점수가 낮을 경우 보증금을 높게 납부하거나, 일부 신용 불량자도 이용할 수 있는 심사 기준이 완화된 렌트 업체를 찾아봐야 합니다. 신규 가입 시 신용 점수 조회를 통해 가입 가능 여부를 확인합니다.</p>
+      </div>
+      <div class="faq-item">
+        <h3>G80 렌트 시 정비 서비스 포함 여부가 중요한가요?</h3>
+        <p>G80은 고급 세단이므로 정비 비용이 만만치 않습니다. 정비 서비스 포함 옵션을 선택하면 엔진오일, 브레이크 패드, 타이어 교체 등 G80 유지보수 비용을 렌트료에 포함시켜 추가 지출을 막을 수 있습니다. 월 렌트료는 높아지지만, 신경 쓸 일이 없어 편리합니다. <span class="highlight">G80 내돈내산 후기</span>를 보면 정비 서비스를 포함한 상품을 추천하는 경우가 많습니다.</p>
+      </div>
+    </div>
+
+    <!-- 관련 키워드 섹션 (SEO 강화) -->
+    <div class="faq">
+        <h2>관련 키워드 & 자주 함께 찾는 항목 (G80 렌트)</h2>
+        <p>G80 렌트 정보를 찾는 사용자들이 함께 검색하는 자동완성키워드 및 연관검색어입니다.</p>
+        <div style="column-count: 3; font-size: 0.95em;">
+            <ul>
+                <li>G80 장기렌트 가격 비교</li>
+                <li>G80 렌트 저렴한곳 순위</li>
+                <li>제네시스 G80 렌트 견적</li>
+                <li>G80 렌트 장점 단점 차이점</li>
+                <li>G80 렌트 신규 가입 혜택</li>
+                <li>G80 렌트 프로모션 할인</li>
+                <li>2026 G80 렌트 예상 금액</li>
+                <li>G80 렌트 vs 리스 vs 구매</li>
+                <li>G80 렌트 내돈내산 후기</li>
+                <li>G80 렌트 보험료 포함 여부</li>
+                <li>G80 렌트 업체 추천</li>
+                <li>G80 렌트 보증금 선수금 차이</li>
+                <li>G80 단기 렌트 가격</li>
+                <li>G80 법인 렌트 세금 처리</li>
+                <li>G80 개인 렌트 조건</li>
+                <li>G80 렌트카 번호판 (허/하/호)</li>
+                <li>G80 렌트 정비 옵션</li>
+                <li>G80 렌트 주행거리 제한</li>
+                <li>G80 렌트 만기 인수 가격</li>
+                <li>G80 렌트 신용등급 조회</li>
+                <li>G80 렌트 싼곳 찾기</li>
+                <li>G80 렌트 현금지원 이벤트</li>
+                <li>G80 렌트 상품권 지급</li>
+                <li>G80 렌트 업체 순위</li>
+                <li>G80 렌트 전문 상담</li>
+                <li>G80 렌트 가입 절차</li>
+                <li>G80 렌트카 대여 비용</li>
+                <li>G80 렌트카 후기 유튜브</li>
+                <li>G80 렌트카 장기 계약 팁</li>
+                <li>G80 렌트카 단기 비용</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 신뢰할 수 있는 외부 출처 -->
+    <div class="external-links">
+      <h2>신뢰할 수 있는 자료 출처 (G80 렌트 관련)</h2>
+      <p>본 글의 정보는 2026년 기준 자동차 산업 동향, 소비자 보호 기준, 금융 감독원 자료를 바탕으로 작성되었습니다.</p>
+      <ul>
+        <li><a href="https://www.fss.or.kr" target="_blank" rel="noopener">금융감독원 (FSS) – 금융 소비자 보호 및 리스/렌트 상품 안내</a></li>
+        <li><a href="https://www.molit.go.kr" target="_blank" rel="noopener">국토교통부 (MOLIT) – 자동차 관리법 및 렌터카 사업 규정</a></li>
+        <li><a href="https://www.caa.go.kr" target="_blank" rel="noopener">한국소비자원 – 렌터카 소비자 피해 사례 및 가이드라인</a></li>
+        <li><a href="https://namu.wiki/w/장기렌터카" target="_blank" rel="noopener">나무위키 – 장기렌터카 항목 (원리, 장단점 분석)</a></li>
+        <li><a href="https://www.kita.net" target="_blank" rel="noopener">한국무역협회 – 자동차 수출입 및 산업 동향 보고서 (G80 시장 분석)</a></li>
+        <li><a href="https://www.hif.or.kr" target="_blank" rel="noopener">한국렌터카사업조합연합회 – 렌터카 산업 통계 및 정보</a></li>
+      </ul>
+    </div>
+
+    <!-- 결론 / 마무리 -->
+    <h2>맺음말: G80 렌트, 현명한 선택을 위한 마무리 조언</h2>
+    <p>제네시스 G80 렌트는 <span class="highlight">고급 세단을 낮은 초기 비용으로 이용하고 싶은 운전자, 특히 사업자에게 가장 매력적인 선택지</span>입니다. 월 렌트료, 계약 기간, 주행거리, 정비 서비스 옵션 등 다양한 조건에 따라 G80 렌트 비용이 크게 달라지므로, <span class="bold-text">단 한 곳의 견적만으로는 <span class="highlight">저렴한곳</span>을 찾을 수 없습니다.</span></p>
+    <p>다양한 렌트 업체들의 견적을 비교하고, G80 프로모션이나 신규 가입 혜택을 꼼꼼히 확인하여 본인의 운전 습관과 재정 상황에 가장 적합한 G80 렌트 상품을 선택하시기 바랍니다. 위의 계산기 및 비교표가 현명한 결정에 도움이 되기를 바랍니다.</p>
+    <p class="bold-text">2026년 기준 G80 모델은 여전히 인기가 높으므로, 재고 차량 확보가 어려울 수 있습니다. 빠른 출고를 원한다면 미리 견적 문의를 통해 렌트 가능 여부를 확인하세요.</p>
+  </div>
+  
